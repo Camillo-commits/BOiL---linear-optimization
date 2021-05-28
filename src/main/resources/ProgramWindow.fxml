@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgramController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="414.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
       <children>
@@ -19,22 +20,22 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="Add">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Variable" />
-                              <MenuItem mnemonicParsing="false" text="Constraint" />
-                              <MenuItem mnemonicParsing="false" text="Function" />
+                          <MenuItem fx:id="addVariable" mnemonicParsing="false" text="Variable" />
+                              <MenuItem fx:id="addConstraint" mnemonicParsing="false" text="Constraint" />
+                              <MenuItem fx:id="addFunction" mnemonicParsing="false" text="Function" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Clear">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Variables" />
-                              <MenuItem mnemonicParsing="false" text="Constraints" />
-                              <MenuItem mnemonicParsing="false" text="Functions" />
+                          <MenuItem fx:id="clearVariables" mnemonicParsing="false" text="Variables" />
+                              <MenuItem fx:id="clearConstraints" mnemonicParsing="false" text="Constraints" />
+                              <MenuItem fx:id="clearFunctions" mnemonicParsing="false" text="Functions" />
                         </items>
                       </Menu>
                         <Menu mnemonicParsing="false" text="Solve">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Minimalization" />
-                            <MenuItem mnemonicParsing="false" text="Maximization" />
+                              <MenuItem fx:id="solveMinimization" mnemonicParsing="false" text="Minimization" />
+                            <MenuItem fx:id="solveMaximization" mnemonicParsing="false" text="Maximization" />
                           </items>
                         </Menu>
                     </menus>
@@ -44,19 +45,35 @@
                         <VBox>
                            <children>
                               <Label alignment="CENTER" prefHeight="18.0" prefWidth="223.0" text="Variables" />
-                              <ListView />
+                              <TableView fx:id="variableTableView">
+                                <columns>
+                                  <TableColumn fx:id="beginColumn" prefWidth="75.0" text="Begin" />
+                                  <TableColumn fx:id="endColumn" prefWidth="75.0" text="End" />
+                                    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                                </columns>
+                              </TableView>
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label alignment="CENTER" prefHeight="18.0" prefWidth="242.0" text="Constraints" />
-                              <ListView />
+                              <TableView fx:id="constraintsTableView">
+                                <columns>
+                                  <TableColumn fx:id="value1Column" prefWidth="75.0" text="Value 1" />
+                                  <TableColumn fx:id="relationColumn" prefWidth="75.0" text="Relation" />
+                                    <TableColumn fx:id="value2Column" prefWidth="75.0" text="Value 2" />
+                                </columns>
+                              </TableView>
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label alignment="CENTER" prefHeight="18.0" prefWidth="214.0" text="Functions" />
-                              <ListView />
+                              <TableView fx:id="functionsTableView">
+                                <columns>
+                                  <TableColumn fx:id="functionColumn" prefWidth="220.0" text="Function" />
+                                </columns>
+                              </TableView>
                            </children>
                         </VBox>
                      </children>
