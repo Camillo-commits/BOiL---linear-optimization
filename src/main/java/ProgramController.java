@@ -1,3 +1,5 @@
+import DataParsers.ConstraintParser;
+import DataParsers.VariableCollector;
 import DataParsers.VariableParser;
 import Models.Constraints;
 import Models.Functions;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 
@@ -73,6 +76,9 @@ public class ProgramController implements Initializable {
     private ObservableList<Constraints> constraintObservableList =  FXCollections.observableArrayList();
     private ObservableList<Functions> functionsObservableList =  FXCollections.observableArrayList();
 
+    private LinkedList<Variable> variableLinkedList = new LinkedList<>();
+    private LinkedList<Constraints> constraintsLinkedList = new LinkedList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         assert addVariable != null : "Fail to inject";
@@ -126,7 +132,7 @@ public class ProgramController implements Initializable {
 
        stage.setScene(scene);
        stage.setResizable(false);
-       stage.setAlwaysOnTop(true);
+       //stage.setAlwaysOnTop(true);
        stage.showAndWait();
        if(VariableParser.getVariable().getName() != null){
            variableObservableList.add(new Variable(
@@ -134,12 +140,39 @@ public class ProgramController implements Initializable {
                    VariableParser.getVariable().getEnd(),
                    VariableParser.getVariable().getName()
                    ));
+           variableLinkedList.add(new Variable(
+                   VariableParser.getVariable().getBegin(),
+                   VariableParser.getVariable().getEnd(),
+                   VariableParser.getVariable().getName()
+           ));
        }
-
     }
     @FXML
-    private void addConstraint(){
+    private void addConstraint() throws IOException {
+        VariableCollector.getList().clear();
+        VariableCollector.getList().addAll(variableLinkedList);
+        Scene scene = new Scene(App.loadFXML("ParameterInputWindow"));
+        Stage stage = new Stage();
 
+        stage.setScene(scene);
+        stage.showAndWait();
+        if(!ConstraintParser.getConstraints().getName().equals("")){
+            constraintObservableList.add(new Constraints(
+                    ConstraintParser.getConstraints().getName(),
+                    ConstraintParser.getConstraints().getParameters(),
+                    ConstraintParser.getConstraints().getRelation(),
+                    ConstraintParser.getConstraints().getRightSide(),
+                    VariableCollector.getList()
+            ));
+            constraintsLinkedList.add(new Constraints(
+                    ConstraintParser.getConstraints().getName(),
+                    ConstraintParser.getConstraints().getParameters(),
+                    ConstraintParser.getConstraints().getRelation(),
+                    ConstraintParser.getConstraints().getRightSide(),
+                    VariableCollector.getList()
+            ));
+
+        }
     }
     @FXML
     private void addFunction(){

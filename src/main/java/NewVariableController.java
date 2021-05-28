@@ -2,6 +2,7 @@ import DataParsers.VariableParser;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,20 +28,28 @@ public class NewVariableController implements Initializable {
 
     @FXML
     private void submit(){
-        Double begin = Double.valueOf(from.getText());
-        Double end = Double.valueOf(to.getText());
-        String nameString = name.getText();
-        if(begin == null || end == null || nameString == null){
+        try {
+            Double begin = Double.valueOf(from.getText());
+            Double end = Double.valueOf(to.getText());
+            String nameString = name.getText();
+            if (begin == null || end == null || nameString == null || begin > end || nameString.equals("")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Data input incorrect");
+                alert.showAndWait();
+            } else {
+                VariableParser.getVariable().setBegin(begin);
+                VariableParser.getVariable().setEnd(end);
+                VariableParser.getVariable().setName(nameString);
+                Stage stage = (Stage) name.getScene().getWindow();
+                stage.close();
+            }
+        }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("First two fields needs to be a number");
+            alert.setHeaderText("Data input incorrect");
+
             alert.showAndWait();
-        }else{
-            VariableParser.getVariable().setBegin(begin);
-            VariableParser.getVariable().setEnd(end);
-            VariableParser.getVariable().setName(nameString);
-            Stage stage = (Stage) name.getScene().getWindow();
-            stage.close();
         }
     }
     @FXML

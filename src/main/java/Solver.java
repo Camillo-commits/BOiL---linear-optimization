@@ -34,7 +34,7 @@ public class Solver {
             }else{
                 this.constraintsList.add(solver.makeConstraint(0,c.getRightSide(),c.getName()));
             }
-            for(int a :c.getParameters()){
+            for(double a :c.getParameters()){
                 this.constraintsList.get(j).setCoefficient(this.variablesList.get(i),a);
                 i++;
             }

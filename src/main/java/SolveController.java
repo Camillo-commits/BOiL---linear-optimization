@@ -24,7 +24,7 @@ public class SolveController implements Initializable {
     }
 
     public void setText1(){
-       text1.setText(solver.variablesToString());
+        text1.setText(solver.variablesToString());
     }
     public void setText2(){
         text2.setText(solver.functionToString());
