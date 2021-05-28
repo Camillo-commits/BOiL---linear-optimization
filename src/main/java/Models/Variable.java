@@ -1,30 +1,31 @@
 package Models;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Variable {
-    private SimpleIntegerProperty begin;
-    private SimpleIntegerProperty end;
+    private SimpleDoubleProperty begin;
+    private SimpleDoubleProperty end;
     private SimpleStringProperty name;
 
     public Variable(){};
     public Variable(int begin, int end, String name){
-        this.begin = new SimpleIntegerProperty(begin);
-        this.end = new SimpleIntegerProperty(end);
+        this.begin = new SimpleDoubleProperty(begin);
+        this.end = new SimpleDoubleProperty(end);
         this.name = new SimpleStringProperty(name);
     }
 
-    public SimpleIntegerProperty beginProperty(){
+    public SimpleDoubleProperty beginProperty(){
         if(begin == null){
-            begin = new SimpleIntegerProperty(this,"begin");
+            begin = new SimpleDoubleProperty(this,"begin");
         }
         return begin;
     }
 
-    public SimpleIntegerProperty endProperty(){
+    public SimpleDoubleProperty endProperty(){
         if(end == null){
-            end = new SimpleIntegerProperty(this,"end");
+            end = new SimpleDoubleProperty(this,"end");
         }
         return end;
     }
@@ -36,11 +37,11 @@ public class Variable {
         return name;
     }
 
-    public void setBegin(int begin){
+    public void setBegin(double begin){
         this.begin.set(begin);
     }
 
-    public void setEnd(int end){
+    public void setEnd(double end){
         this.end.set(end);
     }
 
@@ -48,11 +49,11 @@ public class Variable {
         this.name.set(name);
     }
 
-    public Integer getBegin(){
+    public Double getBegin(){
         return begin.get();
     }
 
-    public int getEnd(){
+    public Double getEnd(){
         return end.get();
     }
 
