@@ -17,22 +17,22 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Add">
                   <items>
-                    <MenuItem fx:id="addVariable" mnemonicParsing="false" text="Variable" />
-                        <MenuItem fx:id="addConstraint" mnemonicParsing="false" text="Constraint" />
-                        <MenuItem fx:id="addFunction" mnemonicParsing="false" text="Function" />
+                    <MenuItem fx:id="addVariable" mnemonicParsing="false" onAction="#addVariable" text="Variable" />
+                        <MenuItem fx:id="addConstraint" mnemonicParsing="false" onAction="#addConstraint" text="Constraint" />
+                        <MenuItem fx:id="addFunction" mnemonicParsing="false" onAction="#addFunction" text="Function" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Clear">
                   <items>
-                    <MenuItem fx:id="clearVariables" mnemonicParsing="false" text="Variables" />
-                        <MenuItem fx:id="clearConstraints" mnemonicParsing="false" text="Constraints" />
-                        <MenuItem fx:id="clearFunctions" mnemonicParsing="false" text="Functions" />
+                    <MenuItem fx:id="clearVariables" mnemonicParsing="false" onAction="#clearVariables" text="Variables" />
+                        <MenuItem fx:id="clearConstraints" mnemonicParsing="false" onAction="#clearConstraints" text="Constraints" />
+                        <MenuItem fx:id="clearFunctions" mnemonicParsing="false" onAction="#clearFunctions" text="Functions" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Solve">
                     <items>
-                        <MenuItem fx:id="solveMinimization" mnemonicParsing="false" text="Minimization" />
-                      <MenuItem fx:id="solveMaximization" mnemonicParsing="false" text="Maximization" />
+                        <MenuItem fx:id="solveMinimization" mnemonicParsing="false" onAction="#solveMinimization" text="Minimization" />
+                      <MenuItem fx:id="solveMaximization" mnemonicParsing="false" onAction="#solveMaximization" text="Maximization" />
                     </items>
                   </Menu>
               </menus>
