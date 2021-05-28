@@ -115,4 +115,38 @@ public class ProgramController implements Initializable {
 
         functionColumn.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue().getFunction()));
     }
+
+    @FXML
+    private void addVariable(){
+
+    }
+    @FXML
+    private void addConstraint(){
+
+    }
+    @FXML
+    private void addFunction(){
+
+    }
+    @FXML
+    private void clearVariables(){
+
+    }
+    @FXML
+    private void clearConstraints(){
+
+    }
+    @FXML
+    private void clearFunctions(){
+
+    }
+    @FXML
+    private void solveMinimization(){
+
+    }
+    @FXML
+    private void solveMaximization(){
+
+    }
+
 }
