@@ -56,5 +56,17 @@ public class Solver {
         function.setMinimization();
         solver.solve();
     }
+    public String variablesToString(){
+        String temp="";
+        for(MPVariable v:variablesList){
+            temp=temp+v.name() + " = "+v.solutionValue()+"\n";
+        }
+        return temp;
+    }
+    public String functionToString(){
+        String temp="Wartość funkcji : ";
+        temp=temp+function.value();
+        return temp;
+    }
 
 }
