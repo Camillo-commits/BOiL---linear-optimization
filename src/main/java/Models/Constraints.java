@@ -72,4 +72,8 @@ public class Constraints {
     public void setParameters(List<Integer> parameters) {
         this.parameters = parameters;
     }
+    public String getName() {
+        return name.get();
+    }
+
 }
