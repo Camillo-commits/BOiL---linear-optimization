@@ -55,6 +55,12 @@ public class Constraints {
     public double getRightSide(){
         return rightSide.get();
     }
+    public String getName(){
+        return name.get();
+    }
+    public void setName(String name){
+        this.name.set(name);
+    }
     public void setConstraint(String constraint){
         this.constraint.set(constraint);
     }
@@ -72,8 +78,4 @@ public class Constraints {
     public void setParameters(List<Integer> parameters) {
         this.parameters = parameters;
     }
-    public String getName() {
-        return name.get();
-    }
-
 }

@@ -14,11 +14,11 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
         stage = primaryStage;
-        scene = new Scene(loadFXML("LoginWindow"));
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icon.png")));
-        primaryStage.setTitle("Generator");
+        scene = new Scene(loadFXML("ProgramWindow"));
+        //stage.getIcons().add(new Image(App.class.getResourceAsStream("icon.png")));
+        primaryStage.setTitle("Solver");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
 
     }

@@ -1,6 +1,7 @@
 import Models.Constraints;
 import Models.Functions;
 import Models.Variable;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -48,14 +49,17 @@ public class ProgramController implements Initializable {
     @FXML
     TableView<Constraints> constraintsTableView;
     @FXML
-    TableColumn<Constraints,String> value1Column;
+    TableColumn<Constraints,String> constraintNameColumn;
+    @FXML
+    TableColumn<Constraints,String> constraintColumn;
     @FXML
     TableColumn<Constraints,String> relationColumn;
     @FXML
-    TableColumn<Constraints,String> value2Column;
+    TableColumn<Constraints,String> rightSideColumn;
 
     @FXML
     TableView<Functions> functionsTableView;
+    @FXML
     TableColumn<Functions,String> functionColumn;
 
     //add rest column objects and create valueFactories for them
@@ -85,9 +89,10 @@ public class ProgramController implements Initializable {
         assert nameColumn != null : "Fail to inject";
 
         assert constraintsTableView != null : "Fail to inject";
-        assert value1Column != null : "Fail to inject";
+        assert constraintNameColumn != null : "Fail to inject";
+        assert constraintColumn != null : "Fail to inject";
         assert relationColumn != null : "Fail to inject";
-        assert value2Column != null : "Fail to inject";
+        assert rightSideColumn != null : "Fail to inject";
 
         assert functionsTableView != null : "Fail to inject";
         assert functionColumn != null : "Fail to inject";
@@ -103,6 +108,11 @@ public class ProgramController implements Initializable {
         endColumn.setCellValueFactory(cvf -> new SimpleStringProperty(String.valueOf(cvf.getValue().getEnd())));
         nameColumn.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue().getName()));
 
-        //value1Column.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue()));
+        constraintNameColumn.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue().getName()));
+        constraintColumn.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue().getConstraint()));
+        relationColumn.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue().getRelation()));
+        rightSideColumn.setCellValueFactory(cvf -> new SimpleStringProperty(String.valueOf(cvf.getValue().getRightSide())));
+
+        functionColumn.setCellValueFactory(cvf -> new SimpleStringProperty(cvf.getValue().getFunction()));
     }
 }
