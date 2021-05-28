@@ -1,3 +1,4 @@
+import DataParsers.VariableParser;
 import Models.Constraints;
 import Models.Functions;
 import Models.Variable;
@@ -8,11 +9,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -117,7 +118,21 @@ public class ProgramController implements Initializable {
     }
 
     @FXML
-    private void addVariable(){
+    private void addVariable() throws IOException {
+       Scene scene = new Scene(App.loadFXML("NewVariableWindow"));
+       Stage stage = new Stage();
+
+       stage.setScene(scene);
+       stage.setResizable(false);
+       stage.setAlwaysOnTop(true);
+       stage.showAndWait();
+       if(VariableParser.getVariable().getName() != null){
+           variableObservableList.add(new Variable(
+                   VariableParser.getVariable().getBegin(),
+                   VariableParser.getVariable().getEnd(),
+                   VariableParser.getVariable().getName()
+                   ));
+       }
 
     }
     @FXML

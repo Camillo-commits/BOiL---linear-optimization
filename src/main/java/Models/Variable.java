@@ -9,8 +9,12 @@ public class Variable {
     private SimpleDoubleProperty end;
     private SimpleStringProperty name;
 
-    public Variable(){};
-    public Variable(int begin, int end, String name){
+    public Variable(){
+        this.begin = new SimpleDoubleProperty();
+        this.end = new SimpleDoubleProperty();
+        this.name = new SimpleStringProperty();
+    };
+    public Variable(double begin, double end, String name){
         this.begin = new SimpleDoubleProperty(begin);
         this.end = new SimpleDoubleProperty(end);
         this.name = new SimpleStringProperty(name);

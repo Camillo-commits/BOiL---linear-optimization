@@ -48,6 +48,9 @@
                             <TableColumn fx:id="endColumn" prefWidth="75.0" text="End" />
                               <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </children>
                   </VBox>
@@ -61,6 +64,9 @@
                             <TableColumn fx:id="relationColumn" prefWidth="75.0" text="Relation" />
                               <TableColumn fx:id="rightSideColumn" prefWidth="75.0" text="Right side" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </children>
                   </VBox>
@@ -71,6 +77,9 @@
                           <columns>
                             <TableColumn fx:id="functionColumn" prefWidth="220.0" text="Function" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </children>
                   </VBox>
