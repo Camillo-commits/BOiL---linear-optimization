@@ -180,15 +180,17 @@ public class ProgramController implements Initializable {
     }
     @FXML
     private void clearVariables(){
-
+        variableLinkedList.clear();
+        variableObservableList.clear();
     }
     @FXML
     private void clearConstraints(){
-
+        constraintsLinkedList.clear();
+        constraintObservableList.clear();
     }
     @FXML
     private void clearFunctions(){
-
+        functionsObservableList.clear();
     }
     @FXML
     private void solveMinimization() throws IOException {
