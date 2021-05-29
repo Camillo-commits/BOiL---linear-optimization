@@ -100,7 +100,7 @@ public class Constraints {
             if(parameters.get(i) >= 0)
                 tmp = tmp.concat(" + " + parameters.get(i) + " * " + variables.get(i).getName());
             else
-                tmp = tmp.concat(" - " + parameters.get(i) + " * " + variables.get(i).getName());
+                tmp = tmp.concat(" - " + (-parameters.get(i)) + " * " + variables.get(i).getName());
         }
         this.constraint.set(tmp);
     }

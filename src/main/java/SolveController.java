@@ -16,13 +16,13 @@ public class SolveController implements Initializable {
     @FXML
     TextArea text2;
 
-    @FXML
-    Button button;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        setText1();
+        setText2();
     }
     @FXML
     public void setText1(){
@@ -32,9 +32,5 @@ public class SolveController implements Initializable {
     public void setText2(){
         text2.setText(SolverParser.getSolver().functionToString());
     }
-    @FXML
-    public void solve(){
-        setText1();
-        setText2();
-    }
+
 }

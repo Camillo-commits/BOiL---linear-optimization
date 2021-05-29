@@ -50,6 +50,7 @@ public class NewFunctionController implements Initializable {
                 Stage stage = (Stage) submit.getScene().getWindow();
                 stage.close();
             }
+            input.setText("");
         }catch (Exception e){
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);

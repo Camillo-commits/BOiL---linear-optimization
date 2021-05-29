@@ -62,6 +62,7 @@ public class ParameterInputController implements Initializable {
                 Stage stage = (Stage) submit.getScene().getWindow();
                 stage.close();
             }
+            input.setText("");
         }catch (Exception e){
             ConstraintParser.getConstraints().setName("");
             Alert alert = new Alert(Alert.AlertType.ERROR);

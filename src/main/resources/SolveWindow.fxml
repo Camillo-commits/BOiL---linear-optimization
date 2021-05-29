@@ -14,10 +14,5 @@
             <TextArea fx:id="text2" prefHeight="326.0" prefWidth="298.0" />
          </children>
       </HBox>
-      <Pane prefHeight="70.0" prefWidth="600.0">
-         <children>
-            <Button fx:id="button" layoutX="274.0" layoutY="23.0" mnemonicParsing="false" onAction="#solve" text="Solve" />
-         </children>
-      </Pane>
    </children>
 </VBox>
