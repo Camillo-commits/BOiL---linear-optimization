@@ -16,7 +16,7 @@ public class App extends Application {
         stage = primaryStage;
         scene = new Scene(loadFXML("ProgramWindow"));
         //stage.getIcons().add(new Image(App.class.getResourceAsStream("icon.png")));
-        primaryStage.setTitle("Solver");
+        primaryStage.setTitle("Models.Solver");
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();

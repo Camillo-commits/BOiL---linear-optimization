@@ -1,3 +1,5 @@
+package Models;
+
 import Models.Constraints;
 import Models.Functions;
 import Models.Variable;
@@ -12,12 +14,15 @@ import java.util.List;
 
 public class Solver {
     int variables,constraints;
-    MPSolver solver = MPSolver.createSolver("GLOP");
+    MPSolver solver;
     List<MPVariable> variablesList=new ArrayList<>();
     List<MPConstraint> constraintsList=new ArrayList<>();
-    MPObjective function= solver.objective();
+    MPObjective function;
 
     public Solver(List<Constraints>constraintsList, Functions function, List<Variable>variablesList){
+        Loader.loadNativeLibraries();
+        solver = MPSolver.createSolver("GLOP");
+        this.function= solver.objective();
         this.variables=variablesList.size();
         this.constraints=constraintsList.size();
         for(Variable v:variablesList){
@@ -34,6 +39,8 @@ public class Solver {
             }else{
                 this.constraintsList.add(solver.makeConstraint(0,c.getRightSide(),c.getName()));
             }
+            System.out.println("Parameters "+c.getParameters().size());
+            System.out.println("Variables "+this.variablesList.size());
             for(double a :c.getParameters()){
                 this.constraintsList.get(j).setCoefficient(this.variablesList.get(i),a);
                 i++;

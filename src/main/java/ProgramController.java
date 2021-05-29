@@ -1,11 +1,8 @@
-import DataParsers.ConstraintParser;
-import DataParsers.VariableCollector;
-import DataParsers.VariableParser;
+import DataParsers.*;
 import Models.Constraints;
 import Models.Functions;
+import Models.Solver;
 import Models.Variable;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -175,8 +172,20 @@ public class ProgramController implements Initializable {
         }
     }
     @FXML
-    private void addFunction(){
+    private void addFunction() throws IOException {
+        VariableCollector.getList().clear();
+        VariableCollector.getList().addAll(variableLinkedList);
+        Scene scene = new Scene(App.loadFXML("NewFunctionWindow"));
+        Stage stage = new Stage();
 
+        stage.setScene(scene);
+        stage.showAndWait();
+        if(FunctionParser.getFunction().getCoefficientList().get(0)!=0) {
+            functionsObservableList.add(new Functions(
+                    FunctionParser.getFunction().getFunction(),
+                    FunctionParser.getFunction().getCoefficientList()
+            ));
+        }
     }
     @FXML
     private void clearVariables(){
@@ -196,13 +205,11 @@ public class ProgramController implements Initializable {
     private void solveMinimization() throws IOException {
         Solver solver=new Solver(constraintObservableList,functionsObservableList.get(0),variableObservableList);
         solver.min();
-
+        SolverParser.setSolver(solver);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SolveWindow.fxml"));
         Parent root =loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        SolveController cntr = loader.getController();
-        cntr.getData(solver);
         stage.setResizable(false);
         stage.setAlwaysOnTop(true);
         stage.showAndWait();
@@ -213,13 +220,12 @@ public class ProgramController implements Initializable {
 
         Solver solver=new Solver(constraintObservableList,functionsObservableList.get(0),variableObservableList);
         solver.max();
-
+        SolverParser.setSolver(solver);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SolveWindow.fxml"));
         Parent root =loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        SolveController cntr = loader.getController();
-        cntr.getData(solver);
+
         stage.setResizable(false);
         stage.setAlwaysOnTop(true);
         stage.showAndWait();
