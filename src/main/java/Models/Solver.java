@@ -36,8 +36,12 @@ public class Solver {
                 this.constraintsList.add(solver.makeConstraint(c.getRightSide(),c.getRightSide(),c.getName()));
             }else if(c.getRelation().equals(">=")){
                 this.constraintsList.add(solver.makeConstraint(c.getRightSide(),0,c.getName()));
-            }else{
+            }else if (c.getRelation().equals("<=")){
                 this.constraintsList.add(solver.makeConstraint(0,c.getRightSide(),c.getName()));
+            }else if(c.getRelation().equals("<")){
+                this.constraintsList.add(solver.makeConstraint(0,c.getRightSide()-1,c.getName()));
+            }else {
+                this.constraintsList.add(solver.makeConstraint(c.getRightSide()+1, 0, c.getName()));
             }
             System.out.println("Parameters "+c.getParameters().size());
             System.out.println("Variables "+this.variablesList.size());

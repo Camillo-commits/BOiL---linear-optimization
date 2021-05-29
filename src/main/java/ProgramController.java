@@ -148,6 +148,7 @@ public class ProgramController implements Initializable {
     private void addConstraint() throws IOException {
         VariableCollector.getList().clear();
         VariableCollector.getList().addAll(variableLinkedList);
+        ConstraintParser.getConstraints().getParameters().clear();
         Scene scene = new Scene(App.loadFXML("ParameterInputWindow"));
         Stage stage = new Stage();
 
