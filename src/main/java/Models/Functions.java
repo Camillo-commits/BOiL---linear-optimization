@@ -28,12 +28,12 @@ public class Functions {
 
         String tmp = "fx=";
         if(variables.size() != 0 && coefficientList.size() != 0)
-            tmp = coefficientList.get(0) + " * " + variables.get(0).getName();
+            tmp = tmp.concat(coefficientList.get(0) + " * " + variables.get(0).getName());
         for(int i = 1; i < variables.size(); ++i){
             if(coefficientList.get(i) >= 0)
                 tmp = tmp.concat(" + " + coefficientList.get(i) + " * " + variables.get(i).getName());
             else
-                tmp = tmp.concat(" - " + coefficientList.get(i) + " * " + variables.get(i).getName());
+                tmp = tmp.concat(" - " + Math.abs(coefficientList.get(i)) + " * " + variables.get(i).getName());
         }
         this.function.set(tmp);
     }
